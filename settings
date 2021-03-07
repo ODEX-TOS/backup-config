@@ -28,7 +28,7 @@ show_progress = True
 
 # repository settings
 repository = 'backup@94.226.36.204:/home/backup/Sync/borg/{host_name}-{user_name}-{config_name}'
-prefix = '{host_name}-{{now}}'
+prefix = '{host_name}-'
     # These may contain {<name>} where <name> is any of host_name, user_name,
     # prog_name config_name, or any of the user specified settings.
     # Double up the braces to specify parameters that should be interpreted
