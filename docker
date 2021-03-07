@@ -1,0 +1,2 @@
+# Settings for docker
+src_dirs = '/var/lib/docker'

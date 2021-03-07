@@ -1,0 +1,6 @@
+# Settings for home configuration
+# use of absolute paths is recommended
+src_dirs = '/home/zeus/projects'           # absolute path to directory to be backed up
+excludes = '''
+    **/node_modules
+'''                      # list of files or directories to skip
