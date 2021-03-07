@@ -1,2 +1,5 @@
 # Settings for the testing server
-src_dirs = '/root /var/lib/docker'
+src_dirs = '''
+    /root
+    /var/lib/docker
+''' 
