@@ -1,0 +1,9 @@
+[Unit]
+Description=Run emborg backup @@DATE@@
+
+[Timer]
+OnCalendar=@@DATE@@
+Persistent=true
+
+[Install]
+WantedBy=timers.target
