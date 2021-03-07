@@ -21,7 +21,7 @@ avendesora_account = None  # avendesora account holding passphrase
 notify = 'tom@odex.be'        # who to notify when things go wrong
 notifier = 'notify-send -u normal {prog_name} "{msg}"'
                                          # interactive notifier program
-remote_ratelimit = 2000                  # bandwidth limit in kbps
+remote_ratelimit = 10000                  # bandwidth limit in kbps
 prune_after_create = True                # automatically run prune after a backup
 check_after_create = 'latest'            # automatically run check after a backup
 show_progress = True
