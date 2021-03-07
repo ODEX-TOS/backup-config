@@ -5,6 +5,7 @@
 On the backup server all you need is borg
 It is preferred to create an account on the server without any privileges.
 Allow ssh access from your to backup computer to the server eg:
+
 ```bash
 pacman -S borg # the only dependency on the server (and ssh)
 
@@ -15,7 +16,7 @@ sudo su backup
 
 mkdir .ssh
 touch authorized_keys # add your public key here
-``` 
+```
 
 ## Backup client
 
@@ -27,7 +28,8 @@ Now update the permission of `~/.config/emborg/settings` to `600` as it will con
 `chmod 600 ~/.config/emborg/settings`
 
 Next edit the settings and change the following line:
-```
+
+```conf
 passphrase = ''              # passphrase for encryption key,
 ```
 
@@ -37,4 +39,7 @@ Next use one of the configurations found in `~/.config/emborg`
 If it doesn't exist on the server use `emborg -c <your_configuration> init`
 Then to create an archive is as easy as `emborg -c <your_configuration> create`
 
+### systemd timer
 
+If you want to run the backup periodically (using systemd timer) you can do so using the `create-backup-timer.sh` file
+Simply run the script (from the `~/.config/emborg` directory) and it will create the required service files with the required configurationZ

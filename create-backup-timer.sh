@@ -15,7 +15,7 @@ fi
 emborg_location="$(command -v emborg)"
 
 echo -e "\nValid configurations"
-find "$HOME"/.config/emborg -type f -not -iname "settings" | awk -F'/' '{print "- " $NF}'
+find "$HOME"/.config/emborg -type f -maxdepth 1 -not -iname "settings" | awk -F'/' '{print "- " $NF}'
 echo ""
 read -p "What configuration do you want to use? " config
 
@@ -38,7 +38,7 @@ read -p "How often should the backup take place? " date
 # validate the date
 found="0"
 for valid_data in "${valid_dates[@]}"; do
-   if [[ "$valid_data" == "$match" ]]; then
+   if [[ "$valid_data" == "$date" ]]; then
         found="1"
    fi
 done
@@ -59,14 +59,14 @@ _config_match="@@CONFIG@@"
 _emborg_match="@@EXEC@@"
 
 # fill in the required data
-sed -i 's/'$_config_match'/'$config'/g' services/emborg-backup-"$config".service
-sed -i 's/'$_emborg_match'/'$emborg_location'/g' services/emborg-backup-"$config".service 
+sed -i 's;'$_config_match';'$config';g' services/emborg-backup-"$config".service || exit 1
+sed -i 's;'$_emborg_match';'$emborg_location';g' services/emborg-backup-"$config".service || exit 1
 
-sed -i 's/'$_date_match'/'$date'/g' services/emborg-backup-"$config".timer 
+sed -i 's;'$_date_match';'$date';g' services/emborg-backup-"$config".timer  || exit 1
 
 echo "Setting up the services"
-mv services/emborg-backup-"$config".service  /lib/systemd/system
-mv services/emborg-backup-"$config".timer  /lib/systemd/system
+mv services/emborg-backup-"$config".service  /lib/systemd/system || exit 1
+mv services/emborg-backup-"$config".timer  /lib/systemd/system || exit 1
 
 echo "Reloading systemd daemon"
 systemctl daemon-reload

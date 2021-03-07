@@ -5,7 +5,7 @@ StartLimitIntervalSec=0
 
 [Service]
 Type=simple
-ExecStart=@@EXEC@@ -c @@CONFIG@@ create | tee -a /var/log/emborg-@@CONFIG##.log
+ExecStart=/bin/sh -c '@@EXEC@@ -c @@CONFIG@@ create | tee -a /var/log/emborg-@@CONFIG@@.log'
 
 [Install]
 WantedBy=multi-user.target
