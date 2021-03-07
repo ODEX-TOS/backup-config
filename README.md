@@ -23,7 +23,17 @@ Clone this repository in `~/.config/emborg`
 Install emborg `yay -S emborg` it is in the `AUR`, alternatively use `makepkg`
 Or on other system using `pip install emborg`
 
-Next use on of the configurations found in `~/.config/emborg`
+Now update the permission of `~/.config/emborg/settings` to `600` as it will contain sensitive data
+`chmod 600 ~/.config/emborg/settings`
+
+Next edit the settings and change the following line:
+```
+passphrase = ''              # passphrase for encryption key,
+```
+
+To the passphrase of you repo
+
+Next use one of the configurations found in `~/.config/emborg`
 If it doesn't exist on the server use `emborg -c <your_configuration> init`
 Then to create an archive is as easy as `emborg -c <your_configuration> create`
 
