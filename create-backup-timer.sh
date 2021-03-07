@@ -68,6 +68,9 @@ echo "Setting up the services"
 mv services/emborg-backup-"$config".service  /lib/systemd/system || exit 1
 mv services/emborg-backup-"$config".timer  /lib/systemd/system || exit 1
 
+echo "Creating the remote borg repo"
+emborg -c "$config" init || exit 1
+
 echo "Reloading systemd daemon"
 systemctl daemon-reload
 
