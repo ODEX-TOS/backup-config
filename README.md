@@ -22,7 +22,9 @@ touch authorized_keys # add your public key here
 
 Clone this repository in `~/.config/emborg`
 Install emborg `yay -S emborg` it is in the `AUR`, alternatively use `makepkg`
-Or on other system using `pip install emborg`
+Or on other system using `pip install emborg
+
+> NOTE: if you use `pip install emborg` don't forget to install the borg tool (as emborg depends on it)
 
 Now update the permission of `~/.config/emborg/settings` to `600` as it will contain sensitive data
 `chmod 600 ~/.config/emborg/settings`
