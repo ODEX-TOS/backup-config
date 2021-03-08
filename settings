@@ -19,7 +19,7 @@ avendesora_account = None  # avendesora account holding passphrase
 # basic settings
 # specify notify if batch and notifier if interactive
 notify = 'tom@odex.be'        # who to notify when things go wrong
-notifier = 'notify-send -u normal {prog_name} "{msg}"'
+notifier = 'notify-telegram --title {prog_name} --text "{msg}"'
                                          # interactive notifier program
 remote_ratelimit = 10000                  # bandwidth limit in kbps
 prune_after_create = True                # automatically run prune after a backup
