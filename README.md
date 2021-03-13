@@ -44,4 +44,25 @@ Then to create an archive is as easy as `emborg -c <your_configuration> create`
 ### systemd timer
 
 If you want to run the backup periodically (using systemd timer) you can do so using the `create-backup-timer.sh` file
-Simply run the script (from the `~/.config/emborg` directory) and it will create the required service files with the required configurationZ
+Simply run the script (from the `~/.config/emborg` directory) and it will create the required service files with the required configuration
+
+### Telegram notify
+
+Run the `bash ./create-backup-timer.sh -t` to setup the telegram notifier. It will ad a global script called `notify-telegram`
+That can be used to send information to telegram.
+
+Example:
+
+```bash
+notify-telegram --title "Our title" --text "This is the telegram body"
+```
+
+### Multiple drives
+
+In the case of TOS, we have 2 drives, a network drive and a drive that is offline.
+The offline drive sync's from the network drive.
+The `sync_drives.sh` script provides this functionality. It simply syncs the different borg scripts.
+Open the script and edit these variables:
+
+- `BACKUP_LOC` Is the location to the network drive
+- `PORTABLE_DRIVE_LOC` This is the portable drive that is not connected over the network
