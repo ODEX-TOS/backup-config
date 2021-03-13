@@ -1,0 +1,11 @@
+[Unit]
+Description=Reload the network when detected that it is down
+After=network.target
+StartLimitIntervalSec=0
+
+[Service]
+Type=simple
+ExecStart=/bin/check_network
+
+[Install]
+WantedBy=multi-user.target
