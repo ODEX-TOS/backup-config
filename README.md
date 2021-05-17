@@ -21,7 +21,7 @@ touch authorized_keys # add your public key here
 ## Backup client
 
 Clone this repository in `~/.config/emborg`
-Install emborg `yay -S emborg` it is in the `AUR`, alternatively use `makepkg`
+Install emborg `yay -S emborg python-llfuse` it is in the `AUR`, alternatively use `makepkg`
 Or on other system using `pip install emborg`
 
 > NOTE: if you use `pip install emborg` don't forget to install the borg tool (as emborg depends on it)
