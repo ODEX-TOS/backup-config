@@ -66,3 +66,62 @@ Open the script and edit these variables:
 
 - `BACKUP_LOC` Is the location to the network drive
 - `PORTABLE_DRIVE_LOC` This is the portable drive that is not connected over the network
+
+## Reverting a backup
+
+You can either mount an archive to an existing directory, copy over the required files or restore a given directory
+
+### Restore a given directory
+
+The requirement here is that the directory needs to exist and has the correct permissions (Otherwise the copying won't work properly)
+```bash
+emborg extract bin # extract the bin directory
+
+emborg --archive 'tos-2021-03-13T11:54:36' bin # extract bin from a given archive (snapshot)
+```
+
+### Mount an archive (as a local directory)
+
+You need to have `python-llfuse` installed on your system for this to work.
+`yay -S python-llfuse`
+
+```bash
+emborg mount ~/archive # mount the last archive to the directory ~/archive
+
+emborg --archive 'tos-2021-03-13T11:54:36' ~/archive # mount a given archive to the directory ~/archive
+```
+### Extra information
+
+When using the `--archive` option you need to supply a valid archive.
+To get a list of archives use the following option:
+```bash
+emborg list
+```
+
+You can also list the files/directories available in a given archive by the following command
+```bash
+emborg manifest
+emborg --archive 'tos-2021-03-13T11:54:36' manifest
+```
+
+## Reverting a backup on another compute
+
+Firstly you will need to configure your `~/.config/emborg/settings` file to use to correct data.
+Alter the following lines:
+```py
+passphrase = '' # your passphrase here of the repository to backup
+repository = 'backup:/home/backup/Sync/borg/tos-zeus-home' # change the last directory to match the name of the repository you want to revert
+```
+
+If you don't know the name of the backup you want to make you can execute the following command (substitute the ssh host to match your host)
+```bash
+ssh backup 'ls Sync/borg'
+```
+
+To verify that your backup reverting is going to work execute the following:
+```
+emborg list # if this returns a list of archives you can revert the backup
+```
+
+Now you can follow the details at [Reverting a backup](#reverting-a-backup)
+
